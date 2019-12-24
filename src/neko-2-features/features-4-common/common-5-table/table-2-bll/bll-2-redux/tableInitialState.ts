@@ -9,6 +9,8 @@ export interface ITableState {
 
 }
 
+export type ITables = 'shop';
+
 export const tableInitialState: ITableState = {
     shop: [
         {
@@ -17,7 +19,7 @@ export const tableInitialState: ITableState = {
             price: 40000,
         },
         {
-            id: '0,234535325',
+            id: '0,234535326',
             productName: 'Tesla X',
             price: 35000,
         },
