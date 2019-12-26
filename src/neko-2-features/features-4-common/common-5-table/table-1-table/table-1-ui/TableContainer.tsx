@@ -1,7 +1,7 @@
 import React from 'react';
 import Table, {ITableModel} from "./Table";
 import {useSelector} from "react-redux";
-import {IAppStore} from "../../../../neko-1-main/main-2-bll/store";
+import {IAppStore} from "../../../../../neko-1-main/main-2-bll/store";
 
 const testModel: ITableModel[] = [
     {

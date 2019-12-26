@@ -1,6 +1,6 @@
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {IAppStore} from "../../../../neko-1-main/main-2-bll/store";
-import {ITableActions} from "../../../features-4-common/common-5-table/table-2-bll/bll-2-redux/tableActions";
+import {ITableActions} from "../../../features-4-common/common-5-table/table-1-table/table-2-bll/bll-2-redux/tableActions";
 import {ShopAPI} from "../table-page-3-dal/ShopAPI";
 import {getProducts} from "./getProductsThunks";
 
