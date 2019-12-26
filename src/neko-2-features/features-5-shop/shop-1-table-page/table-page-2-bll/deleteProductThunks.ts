@@ -8,28 +8,28 @@ type Return = void;
 type ExtraArgument = {};
 type IGetStore = () => IAppStore;
 
-export const addProduct = (): ThunkAction<Return, IAppStore, ExtraArgument, ITableActions> =>
+export const deleteProduct = (id: string): ThunkAction<Return, IAppStore, ExtraArgument, ITableActions> =>
     async (dispatch: ThunkDispatch<IAppStore, ExtraArgument, ITableActions>, getStore: IGetStore) => {
 
         // nekoLoading(dispatch, true);
 
         try {
-            const data = await ShopAPI.addProduct();
+            const data = await ShopAPI.deleteProduct(id);
             if (data.error) {
                 // nekoError(dispatch, data.error);
 
-                console.log('Shop Add Product Error!', data.error);
+                console.log('Shop Delete Product Error!', data.error);
             } else {
 
                 // dispatch(setTable('shop', data.products));
                 // nekoSuccess(dispatch, true);
 
-                console.log('Neko Add Product Success!', data);
+                console.log('Neko Delete Product Success!', data);
                 dispatch(getProducts());
             }
         } catch (e) {
             // nekoError(dispatch, e.message);
 
-            console.log('Neko Add Product Error!', e)
+            console.log('Neko Delete Product Error!', e)
         }
     };

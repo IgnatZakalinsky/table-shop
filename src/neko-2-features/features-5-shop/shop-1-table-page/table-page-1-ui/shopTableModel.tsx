@@ -3,6 +3,8 @@ import {ITableModel} from "../../../features-4-common/common-5-table/table-1-ui/
 
 export const shopTableModel = (
     add: () => void,
+    update: (id: string) => void,
+    deleteP: (id: string) => void,
 
 
 ): ITableModel[] => {
@@ -20,8 +22,8 @@ export const shopTableModel = (
                 <button onClick={add}>add</button>
             </div>),
             render: (d: any, i: number) => (<div key={i} style={{width: '15%'}}>
-                <button>delete</button>
-                <button>update</button>
+                <button onClick={() => deleteP(d.id)}>delete</button>
+                <button onClick={() => update(d.id)}>update</button>
             </div>)
         },
 

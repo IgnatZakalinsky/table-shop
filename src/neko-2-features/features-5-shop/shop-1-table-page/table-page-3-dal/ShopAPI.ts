@@ -21,5 +21,18 @@ export const ShopAPI = {
         const response = await instance.post<IGetProducts>('/shop', {product: {productName: 'newCar', price: 7000}});
         return response.data;
     },
+    updateProduct: async (id: string) => {
+        const response = await instance.put<IGetProducts>(
+            '/shop',
+            {product: {productName: 'newCar2', price: 9000, id}}
+            );
+        return response.data;
+    },
+    deleteProduct: async (id: string) => {
+        const response = await instance.delete<IGetProducts>(
+            `/shop?id=${id}`
+        );
+        return response.data;
+    },
 
 };

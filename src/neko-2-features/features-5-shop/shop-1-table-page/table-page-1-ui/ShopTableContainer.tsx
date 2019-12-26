@@ -6,6 +6,8 @@ import {IAppStore} from "../../../../neko-1-main/main-2-bll/store";
 import {getProducts} from "../table-page-2-bll/getProductsThunks";
 import {shopTableModel} from "./shopTableModel";
 import {addProduct} from "../table-page-2-bll/addProductThunks";
+import {updateProduct} from "../table-page-2-bll/updateProductThunks";
+import {deleteProduct} from "../table-page-2-bll/deleteProductThunks";
 
 
 const ShopTableContainer: React.FC = () => {
@@ -27,6 +29,8 @@ const ShopTableContainer: React.FC = () => {
 
     const model = shopTableModel(
         () => dispatch(addProduct()),
+        (id: string) => dispatch(updateProduct(id)),
+        (id: string) => dispatch(deleteProduct(id)),
     );
 
     useEffect(() => {
