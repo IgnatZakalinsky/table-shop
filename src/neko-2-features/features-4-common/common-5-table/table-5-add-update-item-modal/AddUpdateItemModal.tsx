@@ -28,10 +28,10 @@ const AddUpdateItemModal: React.FC<IAddUpdateItemModalProps> = (
     const [show, setShow] = useState(false);
     const [value1, setValue1] = useState('test product name');
     const [value2, setValue2] = useState('0');
-    const disputch = useDispatch();
+    const dispatch = useDispatch();
     const setValue2end = (newValue2: string) => {
         setValue2(newValue2);
-        disputch(addProduct(value1, Number(newValue2)));
+        dispatch(addProduct(value1, Number(newValue2)));
     };
 
     return (
@@ -48,7 +48,9 @@ const AddUpdateItemModal: React.FC<IAddUpdateItemModalProps> = (
 
                 width={300}
                 height={200}
-            />
+            >
+                add new product:
+            </ModalInput>
         </>
     );
 };

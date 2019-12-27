@@ -3,6 +3,7 @@ import {ITableModel} from "../../../features-4-common/common-5-table/table-1-tab
 import SortButton from "../../../features-4-common/common-5-table/table-4-sort-button/SortButton";
 import AddUpdateItemModal
     from "../../../features-4-common/common-5-table/table-5-add-update-item-modal/AddUpdateItemModal";
+import DeleteModal from "../../../features-4-common/common-5-table/table-6-delete-modal/DeleteModal";
 
 export const shopTableModel = (
     update: (id: string) => void,
@@ -31,7 +32,8 @@ export const shopTableModel = (
             ),
             render: (d: any, i: number) => (
                 <div key={i} style={{width: '15%'}}>
-                    <button onClick={() => deleteP(d.id)}>delete</button>
+                    <DeleteModal id={d.id}/>
+                    {/*<button onClick={() => deleteP(d.id)}>delete</button>*/}
                     <button onClick={() => update(d.id)}>update</button>
                 </div>
             )

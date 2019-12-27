@@ -14,7 +14,7 @@ export interface IGetProducts {
 
 export const ShopAPI = {
     getProducts: async () => {
-        const response = await instance.get<IGetProducts>('/shop');
+        const response = await instance.get<IGetProducts>('/shop?sortProducts=PRICE_UP&page=2&pageCount=7');
         return response.data;
     },
     addProduct: async (productName: string, price: number) => {
