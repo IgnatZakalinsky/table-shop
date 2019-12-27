@@ -1,5 +1,8 @@
-import React, {useState} from 'react';
-import {Direction, Range, getTrackBackground} from 'react-range';
+import React, {useEffect, useState} from 'react';
+import {Range, getTrackBackground} from 'react-range';
+import {useDispatch, useSelector} from "react-redux";
+import {IAppStore} from "../../../../neko-1-main/main-2-bll/store";
+import {setMinMax} from "../table-1-table/table-2-bll/bll-2-redux/tableActions";
 
 interface IPriceRangeProps {
     // loading: boolean;
@@ -23,15 +26,28 @@ const PriceRange: React.FC<IPriceRangeProps> = (
 
     }
 ) => {
-    const [values, setValues] = useState([4000, 8000]);
+    const {shop} = useSelector((store: IAppStore) => store.tables);
+    const {minPrice, maxPrice} = shop.settings;
+    const [values, setValues] = useState([minPrice, maxPrice]);
+
+    const dispatch = useDispatch();
+
+    const setGlobalValues = (values: number[]) => {
+        dispatch(setMinMax('shop', values[0], values[1]));
+        setValues(values);
+    };
+
+    useEffect(() => {
+        setGlobalValues([minPrice, maxPrice]);
+    }, [minPrice, maxPrice]);
 
     return (
         <Range
             values={values}
             step={500}
-            min={3000}
-            max={9000}
-            onChange={values => setValues(values)}
+            min={minPrice}
+            max={maxPrice}
+            onChange={values => setGlobalValues(values)}
             renderTrack={({props, children}) => (
                 <div
                     onMouseDown={props.onMouseDown}
@@ -53,8 +69,8 @@ const PriceRange: React.FC<IPriceRangeProps> = (
                             background: getTrackBackground({
                                 values: values,
                                 colors: ['#ccc', '#548BF4', '#ccc'],
-                                min: 3000,
-                                max: 9000
+                                min: minPrice,
+                                max: maxPrice
                             }),
                             alignSelf: 'center'
                         }}

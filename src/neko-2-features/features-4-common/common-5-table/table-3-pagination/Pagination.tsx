@@ -22,10 +22,10 @@ const Pagination: React.FC<IPaginationProps> = (
 
     }
 ) => {
-    const [selectedItems, selectItems] = useState(10);
-    const [selectedPage, selectPage] = useState(7);
+    const [selectedItems, selectItems] = useState(7);
+    const [selectedPage, selectPage] = useState(1);
 
-    const pageTotalCount = 12;
+    const pageTotalCount = 2;
     const pages = [];
     for (let i = 0; i < pageTotalCount; i++) pages.push((
         <button

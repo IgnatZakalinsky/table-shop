@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import PriceRange from "./PriceRange";
+import {useDispatch} from "react-redux";
+import {getProducts} from "../../../features-5-shop/shop-1-table-page/table-page-2-bll/getProductsThunks";
 
 export interface ISearchModel {
 
@@ -27,6 +29,8 @@ const Search: React.FC<ISearchProps> = (
 
     }
 ) => {
+    const dispatch = useDispatch();
+    const search = () => dispatch(getProducts());
 
     return (
         <div
@@ -48,7 +52,7 @@ const Search: React.FC<ISearchProps> = (
                 {/*<option value={'100'} label={'9000'}/>*/}
             {/*</datalist>*/}
             <PriceRange/>
-            <button>Search</button>
+            <button onClick={search}>Search</button>
         </div>
     );
 };

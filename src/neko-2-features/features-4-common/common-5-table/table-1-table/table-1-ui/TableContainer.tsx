@@ -33,7 +33,7 @@ const TableContainer: React.FC = () => {
 
     return (
         <Table
-            data={shop}
+            data={shop.items}
             model={testModel}
         />
     );

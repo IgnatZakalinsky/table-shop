@@ -59,7 +59,7 @@ const ShopTableContainer: React.FC = () => {
     return (
         <Table
             model={model}
-            data={shop}
+            data={shop.items}
         />
     );
 };

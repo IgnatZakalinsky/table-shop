@@ -9,12 +9,18 @@ const instance = axios.create({
 export interface IGetProducts {
     products: IShopTable[];
 
+    minPrice: number;
+    maxPrice: number;
+    productTotalCount: number;
+    page: number;
+    pageCount: number;
+
     error: string;
 }
 
 export const ShopAPI = {
-    getProducts: async () => {
-        const response = await instance.get<IGetProducts>('/shop?sortProducts=PRICE_UP&page=2&pageCount=7');
+    getProducts: async (min: number, max: number) => {
+        const response = await instance.get<IGetProducts>(`/shop?min=${min}&max=${max}`);
         return response.data;
     },
     addProduct: async (productName: string, price: number) => {
