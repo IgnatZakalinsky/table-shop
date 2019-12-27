@@ -9,6 +9,9 @@ export interface IShopSettings {
     maxPrice: number;
     min: number;
     max: number;
+
+    searchName: string;
+
     productTotalCount: number;
     page: number;
     pageCount: number;
@@ -44,6 +47,9 @@ export const tableInitialState: ITableState = {
             maxPrice: 9000,
             min: 1000,
             max: 9000,
+
+            searchName: '',
+
             productTotalCount: 7,
             page: 1,
             pageCount: 4,

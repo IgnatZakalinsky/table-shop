@@ -19,8 +19,12 @@ export interface IGetProducts {
 }
 
 export const ShopAPI = {
-    getProducts: async (min: number, max: number) => {
-        const response = await instance.get<IGetProducts>(`/shop?min=${min}&max=${max}`);
+    getProducts: async (min: number, max: number, searchName: string) => {
+        const response = await instance.get<IGetProducts>(
+            `/shop?`
+            + (max ? `min=${min}&max=${max}&` : '')
+            + (searchName.length > 0 ? `productName=${searchName}&` : '')
+        );
         return response.data;
     },
     addProduct: async (productName: string, price: number) => {
@@ -31,7 +35,7 @@ export const ShopAPI = {
         const response = await instance.put<IGetProducts>(
             '/shop',
             {product: {productName: 'newCar2', price: 9000, id}}
-            );
+        );
         return response.data;
     },
     deleteProduct: async (id: string) => {

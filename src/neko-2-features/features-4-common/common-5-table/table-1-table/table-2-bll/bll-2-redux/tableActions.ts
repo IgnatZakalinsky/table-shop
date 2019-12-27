@@ -12,6 +12,7 @@ export const TABLE_DELETE_ITEM = 'TABLE/DELETE_ITEM';
 export const TABLE_UPDATE_ITEM = 'TABLE/UPDATE_ITEM';
 
 export const TABLE_SET_MIN_MAX_PRICE = 'TABLE/SET_MIN_MAX_PRICE';
+export const TABLE_SET_SEARCH_NAME = 'TABLE/SET_SEARCH_NAME';
 
 interface ISetTable {
     type: typeof TABLE_SET_TABLE;
@@ -40,8 +41,13 @@ interface ISetMinMax {
     min: number;
     max: number;
 }
+interface ISetSearchName {
+    type: typeof TABLE_SET_SEARCH_NAME;
+    table: ITables;
+    searchName: string;
+}
 
-export type ITableActions = ISetTable | ISetMinMax; // | IAddItem | IDeleteItem | IUpdateItem;
+export type ITableActions = ISetTable | ISetMinMax | ISetSearchName; // | IAddItem | IDeleteItem | IUpdateItem;
 
 export const setTable = (table: ITables, items: IShopTable[], settings: IShopSettings): ISetTable => ({
     type: TABLE_SET_TABLE,
@@ -54,4 +60,9 @@ export const setMinMax = (table: ITables, min: number, max: number): ISetMinMax 
     table,
     min,
     max,
+});
+export const setSearchName = (table: ITables, searchName: string): ISetSearchName => ({
+    type: TABLE_SET_SEARCH_NAME,
+    table,
+    searchName,
 });

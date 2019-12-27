@@ -12,12 +12,12 @@ type IGetStore = () => IAppStore;
 
 export const getProducts = (): ThunkAction<Return, IAppStore, ExtraArgument, ITableActions> =>
     async (dispatch: ThunkDispatch<IAppStore, ExtraArgument, ITableActions>, getStore: IGetStore) => {
-        const {min, max} = getStore().tables.shop.settings;
+        const {min, max, searchName} = getStore().tables.shop.settings;
 
         // nekoLoading(dispatch, true);
 
         try {
-            const data = await ShopAPI.getProducts(min, max);
+            const data = await ShopAPI.getProducts(min, max, searchName);
             if (data.error) {
                 // nekoError(dispatch, data.error);
 
@@ -29,6 +29,8 @@ export const getProducts = (): ThunkAction<Return, IAppStore, ExtraArgument, ITa
                     maxPrice: data.maxPrice,
                     min: data.minPrice,
                     max: data.maxPrice,
+
+                    searchName,
 
                     productTotalCount: data.productTotalCount,
                     page: data.page,
